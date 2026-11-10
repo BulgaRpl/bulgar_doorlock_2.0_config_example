@@ -9,8 +9,18 @@
 
 Config = {}
 
--- Dev Stuff Dont use on Live Server!
-Config.Developer = false
+-- Developer tools (disable on production servers).
+Config.Developer = false -- true enables /generatedoor and /generatedooritem
+-- /generatedoor sheriff police = generate a door restricted to listed jobs
+-- /generatedooritem keyitemname = generate a door requiring one inventory item
+-- Stand near a door; the nearest registered door within scanDistance is selected. Output appears in F8.
+-- Double doors are detected automatically when possible; always verify the second door.
+Config.DoorGenerator = {
+    scanDistance = 3.0,        -- metres: search radius for nearest registered door
+    pairDistance = 3.8,        -- metres: maximum distance between double-door leaves
+    textHeight = 1.0,          -- metres above door centre for textCoords
+    interactionDistance = 2.0  -- generated door.distance value
+}
 
 -- Select Framework
 Config.Framework = 'VORP' -- or 'REDEMRP' or 'RSGCore' or 'QBRCore'
@@ -51,6 +61,9 @@ end
 
 -- EXAMPLE LOCKPICK EXPORT USAGE FOR YOUR LOCKPICK SCRIPT END
 -- EXAMPLE LOCKPICK EXPORT USAGE FOR YOUR LOCKPICK SCRIPT END
+
+-- Persist door lock states across server/resource restarts
+Config.SaveDoorStates = false -- true = enable door_states.json persistence
 
 -- Door Settings
 Config.DoorList = {
